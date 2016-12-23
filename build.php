@@ -204,7 +204,7 @@
     $_SESSION['headers'] = $heads;
     $_SESSION['querystring'] = $allqry;
 
-    header("Location: http://localhost/snake-sssearcher/display.php"); /* Redirect browser */
+    header("Location: https://snake-sssearcher.herokuapp.com/display.php"); /* Redirect browser */
     exit();
 
 ?>
