@@ -1,0 +1,6 @@
+TODO
+
+X add genus species field
+X add venomous field
+X add egglaying field
+X clean
