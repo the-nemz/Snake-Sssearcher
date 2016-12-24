@@ -165,38 +165,37 @@
 
     if ($sort1 = $_POST['sort1']) {
 
-        if ($sort1 == "COUNT(*)" && !$_POST['group']) {
-            break;
-        }
+        if (!($sort1 == "COUNT(*)" && !$_POST['group'])) {
 
-        $endqry .= " ORDER BY " . $sort1;
-        if ($sort1dir = $_POST['sort1dir']) {
-            $endqry .= " " . $sort1dir;
-        }
-
-        if ($sort2 = $_POST['sort2']) {
-            $endqry .= ", " . $sort2;
-            if ($sort2dir = $_POST['sort2dir']) {
-                $endqry .= " " . $sort2dir;
+            $endqry .= " ORDER BY " . $sort1;
+            if ($sort1dir = $_POST['sort1dir']) {
+                $endqry .= " " . $sort1dir;
             }
-            if ($sort2 == "C.population") {
+
+            if ($sort2 = $_POST['sort2']) {
+                $endqry .= ", " . $sort2;
+                if ($sort2dir = $_POST['sort2dir']) {
+                    $endqry .= " " . $sort2dir;
+                }
+                if ($sort2 == "C.population") {
+                    $heads = array_diff($heads, array("L.country", "C.population"));
+                    array_unshift($heads, "L.country", "C.population");
+                } else if ($sort2 == "COUNT(*)") {
+                } else {
+                    $heads = array_diff($heads, array($sort2));
+                    array_unshift($heads, $sort2);
+                }
+
+            }
+
+            if ($sort1 == "C.population") {
                 $heads = array_diff($heads, array("L.country", "C.population"));
                 array_unshift($heads, "L.country", "C.population");
-            } else if ($sort2 == "COUNT(*)") {
+            } else if ($sort1 == "COUNT(*)") {
             } else {
-                $heads = array_diff($heads, array($sort2));
-                array_unshift($heads, $sort2);
+                $heads = array_diff($heads, array($sort1));
+                array_unshift($heads, $sort1);
             }
-
-        }
-
-        if ($sort1 == "C.population") {
-            $heads = array_diff($heads, array("L.country", "C.population"));
-            array_unshift($heads, "L.country", "C.population");
-        } else if ($sort1 == "COUNT(*)") {
-        } else {
-            $heads = array_diff($heads, array($sort1));
-            array_unshift($heads, $sort1);
         }
     }
 
