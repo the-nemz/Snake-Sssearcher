@@ -137,7 +137,6 @@
             $qry .= " WHERE " . $adder;
             $where = True;
         }
-        $heads = array_diff($heads, array("S.venomous"));
     }
     if ($liveb = $_POST['liveb']) {
         $adder = "S.live_bearing" . $liveb;
@@ -147,7 +146,6 @@
             $qry .= " WHERE " . $adder;
             $where = True;
         }
-        $heads = array_diff($heads, array("S.live_bearing"));
     }
 
     if ($groupby = $_POST['group']) {
@@ -158,7 +156,7 @@
         }
         if ($groupby == "L.country") {
             $endqry = " GROUP BY L.country ";
-            $heads = array("L.country", "C.population", "COUNT(*)");;
+            $heads = array("L.country", "C.population", "COUNT(*)");
 
         }
     } else {
@@ -166,6 +164,10 @@
     }
 
     if ($sort1 = $_POST['sort1']) {
+
+        if ($sort1 == "COUNT(*)" && !$_POST['group']) {
+            break;
+        }
 
         $endqry .= " ORDER BY " . $sort1;
         if ($sort1dir = $_POST['sort1dir']) {
