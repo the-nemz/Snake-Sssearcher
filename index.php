@@ -51,7 +51,7 @@
         <h3>by Isaac Nemzer</h3><br><br>
     </div>
 
-    <form action="build.php" method="post">
+    <form action="php/build.php" method="post">
 
     Genus: <input type="text" name="genus" style="background-color: #595959"><br>
 

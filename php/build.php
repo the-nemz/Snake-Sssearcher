@@ -10,13 +10,16 @@
 
     $sort1 = $_POST['sort1'];
     $sort2 = $_POST['sort2'];
+    $group = $_POST['group'];
 
     if ($sort1 == "C.continent" || $sort1 == "C.population" ||
-        $sort2 == "C.continent" || $sort2 == "C.population") {
+        $sort2 == "C.continent" || $sort2 == "C.population" ||
+        $group == "L.country") {
         $ordjoin = True;
     } else {
         $ordjoin = False;
     }
+
 
     if ($ordjoin || $cont = $_POST['cont'] || $pop = $_POST['pop']) {
         $heads = array("S.genus_species", "S.common_name", "C.continent",
@@ -155,7 +158,7 @@
         }
         if ($groupby == "L.country") {
             $endqry = " GROUP BY L.country ";
-            $heads = array("L.country", "COUNT(*)");;
+            $heads = array("L.country", "", "COUNT(*)");;
 
         }
     } else {
@@ -204,7 +207,7 @@
     $_SESSION['headers'] = $heads;
     $_SESSION['querystring'] = $allqry;
 
-    header("Location: https://snake-sssearcher.herokuapp.com/display.php"); /* Redirect browser */
+    header("Location: https://snake-sssearcher.herokuapp.com/php/display.php"); /* Redirect browser */
     exit();
 
 ?>

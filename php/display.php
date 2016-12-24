@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <form action="index.php">
+        <form action="../index.php">
             <input type="submit" value="New sssearch?" style="background-color: #77b300; height: 32px; width: 110px; margin-top: 10px; margin-left: 20px;">
         </form>
 
