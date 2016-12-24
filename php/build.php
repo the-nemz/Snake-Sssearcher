@@ -158,7 +158,7 @@
         }
         if ($groupby == "L.country") {
             $endqry = " GROUP BY L.country ";
-            $heads = array("L.country", "", "COUNT(*)");;
+            $heads = array("L.country", "C.population", "COUNT(*)");;
 
         }
     } else {
