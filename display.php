@@ -19,7 +19,7 @@
 
     $boolmap = array(0 => "No", 1 => "Yes");
 
-    $conn = new mysqli("localhost", "root", "", "reptile_project");
+    $conn = new mysqli("rtzsaka6vivj2zp1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "e1d3e5izjovefxga", "h0we7qzq7m3hth0u", "ldrs4sj6qhxlg1qr");
 
     if ($conn->connect_errno) {
         die("Failed to connect to MySQL: " . $conn->connect_error());
